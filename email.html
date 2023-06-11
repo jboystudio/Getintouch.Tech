@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>submit form</title>
+    <link rel="stylesheet" href="email.css">
+</head>
+<body>
+    <div class="container">
+        <form onsubmit="sendEmail(); reset(); return false;">
+            <H1>JJKALEBO TECH DESIGNS</H1>
+            <h3>GET IN TOUCH</h3>
+            <input type="text" id="name" placeholder="name">
+            <input type="text" id="email" placeholder="email">
+            <input type="text" id="phone" placeholder="Phone number">
+            <textarea name="text" id="message" rows="4" placeholder="How can we help you?"></textarea>
+            <button id="sub">SEND</button>
+        </form>
+    </div>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        function sendEmail(){
+            Email.send({
+                Host : "smtp.gmail.com",
+                Username : "jjkalebo21@gmail.com",
+                Password : "3819A352E9887DE0A9349EA06F99D2DCD5D8",
+                To : 'jjkalebo21@gmail.com',
+                From : document.getElementById("email").value,
+                Subject : "New content form inquiry",
+                Body : "Name:" + document.getElementById("name").value
+                + "<br> Email:" + document.getElementById("email").value
+                + "<br> Phone NO.:" + document.getElementById("phone").value
+                + "<br> Message:" + document.getElementById("message").value
+            }).then(
+              message => alert("Message sent successfully")
+            );
+
+        }
+    </script>
+</body>
+</html>

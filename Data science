@@ -1,0 +1,20 @@
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+
+
+data = pd.read_csv('Data Set.csv')
+
+
+
+X = data[['Accident_Index', 'Accident Date', 'year']]  
+y = data['Accident_Severity']  
+
+
+model = LinearRegression()
+model.fit(X, y)
+
+
+
+hypothetical_data = pd.DataFrame({'Accident_Index': [5], 'Accident Date': [4], 'year': [2]})
+severity_prediction = model.predict(hypothetical_data)
+print(f"Hypothetical Accident Severity Prediction: {severity_prediction[0]}") 
